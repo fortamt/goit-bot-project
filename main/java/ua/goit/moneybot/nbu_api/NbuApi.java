@@ -1,10 +1,8 @@
-package ua.goit.moneybot.api;
+package ua.goit.moneybot.nbu_api;
 
-import com.google.gson.JsonArray;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.math.BigDecimal;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
