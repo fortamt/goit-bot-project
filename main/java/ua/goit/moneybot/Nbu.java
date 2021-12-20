@@ -10,18 +10,18 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
-public class PrivatBank {
+public class Nbu {
 
-    private static final String LINK = "https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5";
+    private static final String LINK = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
     private static final HttpClient CLIENT = HttpClient.newHttpClient();
     private static final Gson GSON = new Gson();
-    private static List<PrivatBankInfo> currency = null;
+    private static List<NbuInfo> currency = null;
     static CurrencyHolder holder = new CurrencyHolder();
 
     public static void main(String[] args) {
         Nbu.getRealRates();
         usd();
-        System.out.println("To buy USD " + holder.getUsdRateBuy() + "\nTo Sell USD " + holder.getUsdRateSell());
+        System.out.println("To buy USD " + holder.getUsdRateBuy());
     }
 
 
@@ -34,39 +34,34 @@ public class PrivatBank {
                     .GET()
                     .build();
             HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
-            currency = GSON.fromJson(response.body(), new TypeToken<List<PrivatBankInfo>>() {}.getType());
+            currency = GSON.fromJson(response.body(), new TypeToken<List<NbuInfo>>() {}.getType());
 //            System.out.println(response.statusCode());
-//            System.out.println(currency.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+            System.out.println(currency.toString());
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     public static void usd() {
-        for (PrivatBankInfo info : currency) {
-            if (info.getCcy().equalsIgnoreCase("usd")) {
-                holder.setUsdRateBuy(info.getBuy());
-                holder.setUsdRateSell(info.getSale());
+        for (NbuInfo info : currency) {
+            if (info.getCc().equalsIgnoreCase("usd")) {
+                holder.setUsdRateBuy(info.getRate());
                 break;
             }
         }
     }
     public static void eur() {
-        for (PrivatBankInfo info : currency) {
-            if (info.getCcy().equalsIgnoreCase("eur")) {
-                holder.setEurRateBuy(info.getBuy());
-                holder.setEurRateSell(info.getSale());
+        for (NbuInfo info : currency) {
+            if (info.getCc().equalsIgnoreCase("eur")) {
+                holder.setEurRateBuy(info.getRate());
                 break;
             }
         }
     }
     public static void rub() {
-        for (PrivatBankInfo info : currency) {
-            if (info.getCcy().equalsIgnoreCase("rur")) {
-                holder.setRubRateBuy(info.getBuy());
-                holder.setRubRateSell(info.getSale());
+        for (NbuInfo info : currency) {
+            if (info.getCc().equalsIgnoreCase("rur")) {
+                holder.setRubRateBuy(info.getRate());
                 break;
             }
         }
