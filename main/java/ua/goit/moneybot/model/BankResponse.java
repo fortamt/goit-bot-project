@@ -3,7 +3,7 @@ package ua.goit.moneybot.model;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-public class BankResponse implements Bank{
+public class BankResponse{
 
     BigDecimal usdBuy;
     BigDecimal usdSell = new BigDecimal("27.3458");
@@ -12,7 +12,7 @@ public class BankResponse implements Bank{
     BigDecimal rubBuy;
     BigDecimal rubSell;
 
-    @Override
+
     public void setCurrency(UserSettings userSettings) throws IOException, InterruptedException {
 //        if(userSettings.chosedBank == "mono") {
             MonobankAPI monobankAPI = new MonobankAPI();

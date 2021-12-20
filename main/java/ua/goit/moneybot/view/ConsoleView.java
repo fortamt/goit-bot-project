@@ -4,35 +4,35 @@ import ua.goit.moneybot.model.BankResponse;
 
 import java.math.BigDecimal;
 
-public class ConsoleView implements View {
+public class ConsoleView implements ConsoleViewImpl {
 
     @Override
-    public BigDecimal getUsdBuy(BankResponse bankResponse) {
+    public String getUsdBuy(BankResponse bankResponse) {
         return null;
     }
 
     @Override
-    public BigDecimal getUsdSell(BankResponse bankResponse) {
+    public String getUsdSell(BankResponse bankResponse) {
+        return bankResponse.getUsdSell().toString();
+    }
+
+    @Override
+    public String getEurBuy(BankResponse bankResponse) {
         return null;
     }
 
     @Override
-    public BigDecimal getEurBuy(BankResponse bankResponse) {
+    public String getEurSell(BankResponse bankResponse) {
         return null;
     }
 
     @Override
-    public BigDecimal getEurSell(BankResponse bankResponse) {
+    public String getRubBuy(BankResponse bankResponse) {
         return null;
     }
 
     @Override
-    public BigDecimal getRubBuy(BankResponse bankResponse) {
-        return null;
-    }
-
-    @Override
-    public BigDecimal getRubSell(BankResponse bankResponse) {
+    public String getRubSell(BankResponse bankResponse) {
         return null;
     }
 }
