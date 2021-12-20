@@ -2,7 +2,6 @@ package ua.goit.moneybot;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import ua.goit.moneybot.privatbank_api.PrivatBankInfo;
 
 import java.io.IOException;
 import java.net.URI;

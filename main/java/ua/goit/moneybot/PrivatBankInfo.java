@@ -1,4 +1,4 @@
-package ua.goit.moneybot.privatbank_api;
+package ua.goit.moneybot;
 
 import java.math.BigDecimal;
 import java.util.Objects;
