@@ -1,12 +1,15 @@
 package ua.goit.moneybot.model;
 
 public class UserSettings {
-//    UserInfo userInfo;
-//    int chatId;
-//
-//    public UserSettings(int chatId) {
-//        this.chosedBank = "mono";
-//        this.chatId = chatId;
-//    }
+
+
+    //количество точек после запятой
+    //выбранный банк
+    //выбранные валюты
+    //расписание оповещений о курсе
+
+    UserSettings() {
+
+    }
 }
 

@@ -25,16 +25,16 @@ public class Controller extends TelegramLongPollingBot {
     @Override
     public String getBotUsername() {
         return "@goittestingbot_bot";
-    }
+    }    //есл хотите тестить сюда вбиваете свои значения
 
     @Override
     public String getBotToken() {
-        return "5003580560:AAE9p7Ohh5rFGGTomwmqFBqp5H35nm0NySs";
+        return "5003580560:AAh5rFGG35nm0NySs";  // сюда свой токен
     }
 
 
     @Override
-    public void onUpdateReceived(Update update) {
+    public void onUpdateReceived(Update update) {         //мониторит ввод в чат (наблюдатель)
         if(update.hasCallbackQuery()){
             handleCallback(update.getCallbackQuery());
         } else if (update.hasMessage()) {
@@ -46,7 +46,7 @@ public class Controller extends TelegramLongPollingBot {
         }
     }
 
-    private void handleCallback(CallbackQuery callbackQuery) {
+    private void handleCallback(CallbackQuery callbackQuery) {            //отвечает на колбеки
         Message message = callbackQuery.getMessage();
         try {
             execute(SendMessage.builder()

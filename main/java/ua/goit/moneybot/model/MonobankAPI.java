@@ -12,9 +12,9 @@ import java.util.List;
 
 public class MonobankAPI implements BankAPI{
 
-    private static final HttpClient CLIENT = HttpClient.newHttpClient();
-    private static final Gson GSON = new Gson();
-    private  List<MonobankInfo> currency;
+    private final HttpClient CLIENT = HttpClient.newHttpClient();
+    private final Gson GSON = new Gson();
+    private List<MonobankInfo> currency;
 
     public MonobankAPI() throws IOException, InterruptedException {
         currency = getActualCurrency();
@@ -48,6 +48,10 @@ public class MonobankAPI implements BankAPI{
     @Override
     public BigDecimal getRubSell() {
         return null;
+    }
+
+    public List<MonobankInfo> getCurrency() {
+        return currency;
     }
 
     public List<MonobankInfo> getActualCurrency() throws IOException, InterruptedException {
