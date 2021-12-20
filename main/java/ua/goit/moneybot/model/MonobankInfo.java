@@ -1,32 +1,20 @@
-package ua.goit.moneybot;
+package ua.goit.moneybot.model;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
-class CurrencyInfo{
+class MonobankInfo {
     int currencyCodeA;
     int currencyCodeB;
     int date;
     BigDecimal rateSell;
     BigDecimal rateBuy;
 
-    public int getCurrencyCodeA() {
-        return currencyCodeA;
-    }
-
-    public BigDecimal getRateSell() {
-        return rateSell;
-    }
-
-    public BigDecimal getRateBuy() {
-        return rateBuy;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CurrencyInfo that = (CurrencyInfo) o;
+        MonobankInfo that = (MonobankInfo) o;
         return currencyCodeA == that.currencyCodeA && currencyCodeB == that.currencyCodeB && date == that.date && Objects.equals(rateSell, that.rateSell) && Objects.equals(rateBuy, that.rateBuy);
     }
 
