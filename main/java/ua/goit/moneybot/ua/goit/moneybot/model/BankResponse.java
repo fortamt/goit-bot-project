@@ -1,9 +1,11 @@
 package ua.goit.moneybot.model;
 
+import user.UserSettings;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 
-public class BankResponse{
+public class BankResponse {
 
     private BigDecimal usdBuy;
     private BigDecimal usdSell;

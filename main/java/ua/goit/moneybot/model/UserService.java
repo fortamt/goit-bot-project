@@ -1,5 +1,7 @@
 package ua.goit.moneybot.model;
 
+import user.UserSettings;
+
 import java.util.HashMap;
 
 public class UserService {
