@@ -1,6 +1,6 @@
 package ua.goit.moneybot.model;
 
-import user.UserSettings;
+import ua.goit.moneybot.user.UserSettings;
 
 import java.io.IOException;
 import java.math.BigDecimal;

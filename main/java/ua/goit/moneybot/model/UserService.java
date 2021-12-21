@@ -1,6 +1,6 @@
 package ua.goit.moneybot.model;
 
-import user.UserSettings;
+import ua.goit.moneybot.user.UserSettings;
 
 import java.util.HashMap;
 
