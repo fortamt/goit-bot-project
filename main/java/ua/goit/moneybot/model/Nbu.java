@@ -36,6 +36,10 @@ public class Nbu implements BankAPI {
         return GSON.fromJson(response.body(), new TypeToken<List<NbuInfo>>() {}.getType());
     }
 
+    public List<NbuInfo> getCurrency() {
+        return currency;
+    }
+
 
     @Override
     public BigDecimal getUsdBuy() {
