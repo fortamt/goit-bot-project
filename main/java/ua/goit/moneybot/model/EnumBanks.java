@@ -2,26 +2,16 @@ package ua.goit.moneybot.model;
 
 public enum EnumBanks {
 
-    MONOUSD(840),
-    MONOEUR(978),
-    MONORUB(643),
+    USD(840, "USD"),
+    EUR(978, "EUR"),
+    RUB(643, "RUB");
 
-    NBUUSD(840),
-    NBUEUR(978),
-    NBURUB(643),
-
-    PBUSD("USD"),
-    PBEUR("EUR"),
-    PBRUB("RUR");
 
     private int codeInt;
     private String codeString;
 
-    EnumBanks(int codeInt) {
+    EnumBanks(int codeInt, String codeString) {
         this.codeInt = codeInt;
-    }
-
-    EnumBanks(String codeString) {
         this.codeString = codeString;
     }
 

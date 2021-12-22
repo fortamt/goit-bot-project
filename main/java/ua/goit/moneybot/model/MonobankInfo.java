@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 class MonobankInfo {
-    int currencyCodeA;
-    int currencyCodeB;
-    int date;
-    BigDecimal rateSell;
-    BigDecimal rateBuy;
+    private int currencyCodeA;
+    private int currencyCodeB;
+    private int date;
+    private BigDecimal rateSell;
+    private BigDecimal rateBuy;
 
     @Override
     public boolean equals(Object o) {
