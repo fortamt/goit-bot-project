@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
-
+/.idea
+/out
+/target
+goit-bot-project.iml
 # Log file
 *.log
 
