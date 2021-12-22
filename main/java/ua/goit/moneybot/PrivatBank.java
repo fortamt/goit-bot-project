@@ -18,11 +18,7 @@ public class PrivatBank {
     private static List<PrivatBankInfo> currency = null;
     static CurrencyHolder holder = new CurrencyHolder();
 
-    public static void main(String[] args) {
-        Nbu.getRealRates();
-        usd();
-        System.out.println("To buy USD " + holder.getUsdRateBuy() + "\nTo Sell USD " + holder.getUsdRateSell());
-    }
+
 
 
 
@@ -37,9 +33,7 @@ public class PrivatBank {
             currency = GSON.fromJson(response.body(), new TypeToken<List<PrivatBankInfo>>() {}.getType());
 //            System.out.println(response.statusCode());
 //            System.out.println(currency.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
