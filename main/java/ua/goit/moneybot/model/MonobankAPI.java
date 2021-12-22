@@ -50,10 +50,6 @@ public class MonobankAPI implements BankAPI{
         return null;
     }
 
-    public List<MonobankInfo> getCurrency() {
-        return currency;
-    }
-
     public List<MonobankInfo> getActualCurrency() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://api.monobank.ua/bank/currency"))
