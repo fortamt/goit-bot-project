@@ -1,4 +1,4 @@
-package ua.goit.moneybot.user;
+package ua.goit.moneybot.model;
 
 public class UserSettings {
     String bank = "MonoBank";
