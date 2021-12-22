@@ -9,9 +9,9 @@ public class UserSettings {
     private String name;
     private String surname;
     private byte digitAfterComa;
-    private boolean USD;
-    private boolean EUR;
-    private boolean RUB;
+    private boolean usd;
+    private boolean eur;
+    private boolean rub;
     private String selectedBank;
     private boolean notification;
     private byte notificationTime;
@@ -20,7 +20,7 @@ public class UserSettings {
         this.name = user.getFirstName();
         this.surname = user.getLastName();
         this.digitAfterComa = 2;
-        this.USD = true;
+        this.usd = true;
         this.selectedBank = "Monobank";
     }
 
@@ -28,13 +28,7 @@ public class UserSettings {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getSurname() {
-        return surname;
-    }
 
     public void setSurname(String surname) {
         this.surname = surname;
@@ -48,28 +42,28 @@ public class UserSettings {
         this.digitAfterComa = digitAfterComa;
     }
 
-    public boolean isUSD() {
-        return USD;
+    public boolean isUsd() {
+        return usd;
     }
 
-    public void setUSD(boolean USD) {
-        this.USD = USD;
+    public void setUsd(boolean usd) {
+        this.usd = usd;
     }
 
-    public boolean isEUR() {
-        return EUR;
+    public boolean isEur() {
+        return eur;
     }
 
-    public void setEUR(boolean EUR) {
-        this.EUR = EUR;
+    public void setEur(boolean eur) {
+        this.eur = eur;
     }
 
-    public boolean isRUB() {
-        return RUB;
+    public boolean isRub() {
+        return rub;
     }
 
-    public void setRUB(boolean RUB) {
-        this.RUB = RUB;
+    public void setRub(boolean rub) {
+        this.rub = rub;
     }
 
     public String getSelectedBank() {
@@ -101,12 +95,12 @@ public class UserSettings {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserSettings that = (UserSettings) o;
-        return digitAfterComa == that.digitAfterComa && USD == that.USD && EUR == that.EUR && RUB == that.RUB && notification == that.notification && notificationTime == that.notificationTime && Objects.equals(name, that.name) && Objects.equals(surname, that.surname) && Objects.equals(selectedBank, that.selectedBank);
+        return digitAfterComa == that.digitAfterComa && usd == that.usd && eur == that.eur && rub == that.rub && notification == that.notification && notificationTime == that.notificationTime && Objects.equals(name, that.name) && Objects.equals(surname, that.surname) && Objects.equals(selectedBank, that.selectedBank);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, digitAfterComa, USD, EUR, RUB, selectedBank, notification, notificationTime);
+        return Objects.hash(name, surname, digitAfterComa, usd, eur, rub, selectedBank, notification, notificationTime);
     }
 
     @Override
@@ -115,9 +109,9 @@ public class UserSettings {
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", digitAfterComa=" + digitAfterComa +
-                ", USD=" + USD +
-                ", EUR=" + EUR +
-                ", RUB=" + RUB +
+                ", USD=" + usd +
+                ", EUR=" + eur +
+                ", RUB=" + rub +
                 ", selectedBank='" + selectedBank + '\'' +
                 ", notification=" + notification +
                 ", notificationTime=" + notificationTime +
