@@ -16,30 +16,31 @@ public class BankResponse{
     private void setCurrency(UserSettings userSettings) throws IOException, InterruptedException {
         if (userSettings.getBankName().equals("Monobank")){
             MonobankAPI monobankAPI = new MonobankAPI();
-            monobankAPI.getUsdBuy();
-            monobankAPI.getUsdSell();
-            monobankAPI.getEurBuy();
-            monobankAPI.getEurSell();
-            monobankAPI.getRubBuy();
-            monobankAPI.getRubSell();
+            this.usdBuy = monobankAPI.getUsdBuy();
+            this.usdSell = monobankAPI.getUsdSell();
+            this.eurBuy = monobankAPI.getEurBuy();
+            this.eurSell = monobankAPI.getEurSell();
+            this.rubBuy = monobankAPI.getRubBuy();
+            this.rubSell = monobankAPI.getRubSell();
         } else if (userSettings.getBankName().equals("PrivatBank")){
             PrivatBankankAPI privatBankankAPI = new PrivatBankankAPI();
-            privatBankankAPI.getUsdBuy();
-            privatBankankAPI.getUsdSell();
-            privatBankankAPI.getEurBuy();
-            privatBankankAPI.getEurSell();
-            privatBankankAPI.getRubBuy();
-            privatBankankAPI.getRubSell();
+            this.usdBuy = privatBankankAPI.getUsdBuy();
+            this.usdSell = privatBankankAPI.getUsdSell();
+            this.eurBuy = privatBankankAPI.getEurBuy();
+            this.eurSell = privatBankankAPI.getEurSell();
+            this.rubBuy = privatBankankAPI.getRubBuy();
+            this.rubSell = privatBankankAPI.getRubSell();
         } else if (userSettings.getBankName().equals("NBU")){
             NBUAPI NBUAPI = new NBUAPI();
-            NBUAPI.getUsdBuy();
-            NBUAPI.getUsdSell();
-            NBUAPI.getEurBuy();
-            NBUAPI.getEurSell();
-            NBUAPI.getRubBuy();
-            NBUAPI.getRubSell();
+            this.usdBuy = NBUAPI.getUsdBuy();
+            this.usdSell = NBUAPI.getUsdSell();
+            this.eurBuy = NBUAPI.getEurBuy();
+            this.eurSell = NBUAPI.getEurSell();
+            this.rubBuy = NBUAPI.getRubBuy();
+            this.rubSell = NBUAPI.getRubSell();
         }
     }
+
 
     public BigDecimal getUsdBuy() {
         return usdBuy;
