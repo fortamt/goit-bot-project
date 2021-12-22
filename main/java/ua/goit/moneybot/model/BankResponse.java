@@ -14,7 +14,31 @@ public class BankResponse{
 
 
     private void setCurrency(UserSettings userSettings) throws IOException, InterruptedException {
-        //
+        if (userSettings.getBankName().equals("Monobank")){
+            MonobankAPI monobankAPI = new MonobankAPI();
+            monobankAPI.getUsdBuy();
+            monobankAPI.getUsdSell();
+            monobankAPI.getEurBuy();
+            monobankAPI.getEurSell();
+            monobankAPI.getRubBuy();
+            monobankAPI.getRubSell();
+        } else if (userSettings.getBankName().equals("PrivatBank")){
+            PrivatBankankAPI privatBankankAPI = new PrivatBankankAPI();
+            privatBankankAPI.getUsdBuy();
+            privatBankankAPI.getUsdSell();
+            privatBankankAPI.getEurBuy();
+            privatBankankAPI.getEurSell();
+            privatBankankAPI.getRubBuy();
+            privatBankankAPI.getRubSell();
+        } else if (userSettings.getBankName().equals("NBU")){
+            NBUAPI NBUAPI = new NBUAPI();
+            NBUAPI.getUsdBuy();
+            NBUAPI.getUsdSell();
+            NBUAPI.getEurBuy();
+            NBUAPI.getEurSell();
+            NBUAPI.getRubBuy();
+            NBUAPI.getRubSell();
+        }
     }
 
     public BigDecimal getUsdBuy() {
