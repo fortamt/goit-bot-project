@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 
 public class BankResponse {
 
-    Bank_Response
     private String bankName;
     private String currency;
     private BigDecimal buyRate;
