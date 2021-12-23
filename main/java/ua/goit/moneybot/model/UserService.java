@@ -37,8 +37,8 @@ public class UserService {
     }
 
     public void editTimeReminder(Message message, boolean notification, byte notificationTime) {
-        if (notification) users.get(message.getChatId()).setNotification(false);
-        else users.get(message.getChatId()).setNotificationTime(notificationTime);
+        if (notification) users.get(message.getChatId()).setNotificationTime(notificationTime);
+        else users.get(message.getChatId()).setNotification(false);
     }
 
 
