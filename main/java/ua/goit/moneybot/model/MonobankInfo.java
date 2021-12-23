@@ -33,4 +33,24 @@ class MonobankInfo {
                 ", rateBuy=" + rateBuy +
                 '}';
     }
+
+    public int getCurrencyCodeA() {
+        return currencyCodeA;
+    }
+
+    public int getCurrencyCodeB() {
+        return currencyCodeB;
+    }
+
+    public int getDate() {
+        return date;
+    }
+
+    public BigDecimal getRateSell() {
+        return rateSell;
+    }
+
+    public BigDecimal getRateBuy() {
+        return rateBuy;
+    }
 }

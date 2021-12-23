@@ -11,7 +11,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
-public class NbuAPI implements BankAPI {
+public class NbuAPI{
 
     private static final String LINK = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
     private static final HttpClient CLIENT = HttpClient.newHttpClient();
@@ -21,35 +21,6 @@ public class NbuAPI implements BankAPI {
 
     public NbuAPI() throws IOException, InterruptedException {
         currency = getActualCurrency();
-    }
-    @Override
-    public BigDecimal getUsdBuy() {
-        return null;
-    }
-
-    @Override
-    public BigDecimal getUsdSell() {
-        return null;
-    }
-
-    @Override
-    public BigDecimal getEurBuy() {
-        return null;
-    }
-
-    @Override
-    public BigDecimal getEurSell() {
-        return null;
-    }
-
-    @Override
-    public BigDecimal getRubBuy() {
-        return null;
-    }
-
-    @Override
-    public BigDecimal getRubSell() {
-        return null;
     }
 
     public List<NbuInfo> getActualCurrency() throws IOException, InterruptedException {

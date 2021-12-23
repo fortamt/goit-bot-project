@@ -1,6 +1,6 @@
 package ua.goit.moneybot.model;
 
-public enum EnumBanks {
+public enum CurrencyEnum {
 
     USD(840, "USD"),
     EUR(978, "EUR"),
@@ -10,7 +10,7 @@ public enum EnumBanks {
     private int codeInt;
     private String codeString;
 
-    EnumBanks(int codeInt, String codeString) {
+    CurrencyEnum(int codeInt, String codeString) {
         this.codeInt = codeInt;
         this.codeString = codeString;
     }
