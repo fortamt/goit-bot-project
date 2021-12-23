@@ -11,17 +11,34 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
-public class Nbu implements BankAPI {
+public class PrivatBankAPI implements BankAPI {
 
-    private static final String LINK = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
+    private static final String LINK = "https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5";
     private static final HttpClient CLIENT = HttpClient.newHttpClient();
     private static final Gson GSON = new Gson();
-    private List<NbuInfo> currency;
+    private List<PrivatBankInfo> currency;
 
-
-    public Nbu() throws IOException, InterruptedException {
+    public PrivatBankAPI() throws IOException, InterruptedException {
         currency = getActualCurrency();
     }
+
+
+    public  List<PrivatBankInfo> getActualCurrency() throws IOException, InterruptedException {
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(LINK))
+                    .GET()
+                    .build();
+            HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
+//            System.out.println(response.statusCode());
+//            System.out.println(currency.toString());
+        return GSON.fromJson(response.body(), new TypeToken<List<PrivatBankInfo>>() {}.getType());
+
+    }
+    public List<PrivatBankInfo> getCurrency() {
+        return currency;
+    }
+
     @Override
     public BigDecimal getUsdBuy() {
         return null;
@@ -51,23 +68,4 @@ public class Nbu implements BankAPI {
     public BigDecimal getRubSell() {
         return null;
     }
-
-    public List<NbuInfo> getActualCurrency() throws IOException, InterruptedException {
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(LINK))
-                .GET()
-                .build();
-        HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
-//            System.out.println(response.statusCode());
-//            System.out.println(currency.toString());
-        return GSON.fromJson(response.body(), new TypeToken<List<NbuInfo>>() {}.getType());
-    }
-
-    public List<NbuInfo> getCurrency() {
-        return currency;
-    }
-
-
-
 }

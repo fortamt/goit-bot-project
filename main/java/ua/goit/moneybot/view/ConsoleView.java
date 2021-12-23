@@ -13,7 +13,7 @@ public class ConsoleView implements ConsoleViewImpl {
 
     @Override
     public String getUsdSell(BankResponse bankResponse) {
-        return bankResponse.getUsdSell().toString();
+        return null;
     }
 
     @Override
