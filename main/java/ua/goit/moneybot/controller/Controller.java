@@ -7,19 +7,12 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.MessageEntity;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ua.goit.moneybot.model.BankResponse;
 import ua.goit.moneybot.view.ConsoleView;
 import ua.goit.moneybot.view.ConsoleViewImpl;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 public class Controller extends TelegramLongPollingBot {
-    BankResponse bankResponse = new BankResponse();
     ConsoleViewImpl view = new ConsoleView();
     Keyboards keyboards = new Keyboards();
 

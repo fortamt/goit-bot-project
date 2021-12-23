@@ -3,65 +3,50 @@ package ua.goit.moneybot.model;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-public class BankResponse{
+public class BankResponse {
 
-    private BigDecimal usdBuy;
-    private BigDecimal usdSell;
-    private BigDecimal eurBuy;
-    private BigDecimal eurSell;
-    private BigDecimal rubBuy;
-    private BigDecimal rubSell;
+    private String bankName;
+    private String currency;
+    private BigDecimal buyRate;
+    private BigDecimal sellRate;
 
-
-    private void setCurrency(UserSettings userSettings) throws IOException, InterruptedException {
-        //
+    public BankResponse(String bankName, String currency, BigDecimal buyRate, BigDecimal sellRate) {
+        this.bankName = bankName;
+        this.currency = currency;
+        this.buyRate = buyRate;
+        this.sellRate = sellRate;
     }
 
-    public BigDecimal getUsdBuy() {
-        return usdBuy;
+    public String getBankName() {
+        return bankName;
     }
 
-    public void setUsdBuy(BigDecimal usdBuy) {
-        this.usdBuy = usdBuy;
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
     }
 
-    public BigDecimal getUsdSell() {
-        return usdSell;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setUsdSell(BigDecimal usdSell) {
-        this.usdSell = usdSell;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
-    public BigDecimal getEurBuy() {
-        return eurBuy;
+    public BigDecimal getBuyRate() {
+        return buyRate;
     }
 
-    public void setEurBuy(BigDecimal eurBuy) {
-        this.eurBuy = eurBuy;
+    public void setBuyRate(BigDecimal buyRate) {
+        this.buyRate = buyRate;
     }
 
-    public BigDecimal getEurSell() {
-        return eurSell;
+    public BigDecimal getSellRate() {
+        return sellRate;
     }
 
-    public void setEurSell(BigDecimal eurSell) {
-        this.eurSell = eurSell;
-    }
-
-    public BigDecimal getRubBuy() {
-        return rubBuy;
-    }
-
-    public void setRubBuy(BigDecimal rubBuy) {
-        this.rubBuy = rubBuy;
-    }
-
-    public BigDecimal getRubSell() {
-        return rubSell;
-    }
-
-    public void setRubSell(BigDecimal rubSell) {
-        this.rubSell = rubSell;
+    public void setSellRate(BigDecimal sellRate) {
+        this.sellRate = sellRate;
     }
 }
+
