@@ -17,22 +17,22 @@ public class UserService {
     }
 
     public void changeBank(Message message, String selectedBank) {
-        users.get(message).setSelectedBank(selectedBank);
+        users.get(message.getChatId()).setSelectedBank(selectedBank);
     }
 
     public void changeRounding(Message message, byte digitAfterComa) {
-        users.get(message).setDigitAfterComa(digitAfterComa);
+        users.get(message.getChatId()).setDigitAfterComa(digitAfterComa);
     }
 
     public void changeCurrency(Message message, boolean usd, boolean eur, boolean rub) {
-        users.get(message).setUsd(usd);
-        users.get(message).setUsd(eur);
-        users.get(message).setUsd(rub);
+        users.get(message.getChatId()).setUsd(usd);
+        users.get(message.getChatId()).setUsd(eur);
+        users.get(message.getChatId()).setUsd(rub);
     }
 
     public void editTimeReminder(Message message, boolean notification, byte notificationTime) {
-        if (notification) users.get(message).setNotification(false);
-        else users.get(message).setNotificationTime(notificationTime);
+        if (notification) users.get(message.getChatId()).setNotification(false);
+        else users.get(message.getChatId()).setNotificationTime(notificationTime);
     }
 
 
