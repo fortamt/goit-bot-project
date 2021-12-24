@@ -12,15 +12,13 @@ public class Facade {
     Map<Long, UserSettings> users = new HashMap<>();
 
     public List<BankResponse> getResponseFromBank(UserSettings userSettings, Message message) throws IOException, InterruptedException {
+        CashService cashService = new CashService();
         if(userSettings.getSelectedBank().equals("Monobank")){
-            MonobankAPI monobankAPI = new MonobankAPI();
-            return monobankAPI.getActualCurrency();
+            return cashService.getCashedMonobankCurrency();
         } else if (userSettings.getSelectedBank().equals("PrivatBank")){
-            PrivatBankAPI privatBankAPI = new PrivatBankAPI();
-//            return privatBankAPI.getActualCurrency();    задача для приват апи (аналогия монобанк апи)
+            return cashService.getCashedPrivatBankCurrency();
         } else if (userSettings.getSelectedBank().equals("NBU")){
-            NbuAPI nbuAPI = new NbuAPI();
-//            return nbuAPI.getActualCurrency();   задача для нбу апи
+            return cashService.getCashedNBUCurrency();
         }
         return null;
     }
