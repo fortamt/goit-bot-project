@@ -9,9 +9,9 @@ import java.util.Map;
 
 public class Facade {
 
-    Map<Long, UserSettings> users = new HashMap<>();
+    UserService userService = new UserService();
 
-    public List<BankResponse> getResponseFromBank(UserSettings userSettings, Message message) throws IOException, InterruptedException {
+    public List<BankResponse> getResponseFromBank(UserSettings userSettings){
         CashService cashService = new CashService();
         if(userSettings.getSelectedBank().equals("Monobank")){
             return cashService.getCashedMonobankCurrency();
@@ -23,23 +23,32 @@ public class Facade {
         return null;
     }
 
-//    public String getInfo(UserSettings userSettings, Message message){
-//
-//        System.out.println("Курс в " + getBank(userSettings, message) );
-//    }  в процессе
 
-    public String getBank(Message message){
-        for(Map.Entry<Long, UserSettings> entry : users.entrySet()){
-            if(entry.getKey().equals(message.getChatId())){
-                UserSettings user = entry.getValue();
-                return user.getSelectedBank();
-            }
+    public void addUser(Map<Long, UserSettings> users, Message message) {
+        userService.addUser(users, message);
+    }
+
+    public String getInfo(Map<Long, UserSettings> users, Message message){
+        return  "Курс в " + userService.getUserSettings(users, message).getSelectedBank() +
+                "\n" + showCourses(users, message);
+    }
+
+    public String showCourses(Map<Long, UserSettings> users, Message message){
+        StringBuilder result = new StringBuilder();
+        if(userService.getUserSettings(users, message).isUsd()){
+            return result.append(getUsd(getResponseFromBank(userService.getUserSettings(users, message)))).toString();
         }
         return "Error";
     }
 
-//       в процессе
-
+    public String getUsd(List<BankResponse> list){
+        for (BankResponse bankResponse : list){
+            if(bankResponse.getCurrency().equals("USD")){
+                return "Покупка: " + bankResponse.getBuyRate().toString() + "\nПродажа: " + bankResponse.getSellRate().toString();
+            }
+        }
+        return "Error";
+    }
 
 
 }

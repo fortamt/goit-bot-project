@@ -8,37 +8,39 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserService {
-    //private final Gson GSON = new Gson();
 
-    Map<Long, UserSettings> users = new HashMap<>();
 
-    public void addUser(Message message, UserSettings userSettings) {
-        users.put(message.getChatId(), userSettings);
+    public void addUser(Map<Long, UserSettings> users, Message message) {
+        users.put(message.getChatId(), new UserSettings());
     }
 
-    public void changeBank(Message message, String selectedBank) {
+    public void changeBank(Map<Long, UserSettings> users, Message message, String selectedBank) {
         users.get(message.getChatId()).setSelectedBank(selectedBank);
     }
 
-    public void changeRounding(Message message, byte digitAfterComa) {
+    public void changeRounding(Map<Long, UserSettings> users, Message message, byte digitAfterComa) {
         users.get(message.getChatId()).setDigitAfterComa(digitAfterComa);
     }
 
-    public void changeCurrencyUSD(Message message, boolean usd) {
+    public void changeCurrencyUSD(Map<Long, UserSettings> users, Message message, boolean usd) {
         users.get(message.getChatId()).setUsd(usd);
     }
 
-    public void changeCurrencyEUR(Message message, boolean eur) {
+    public void changeCurrencyEUR(Map<Long, UserSettings> users, Message message, boolean eur) {
         users.get(message.getChatId()).setUsd(eur);
     }
 
-    public void changeCurrencyRUB(Message message, boolean rub) {
+    public void changeCurrencyRUB(Map<Long, UserSettings> users, Message message, boolean rub) {
         users.get(message.getChatId()).setUsd(rub);
     }
 
-    public void editTimeReminder(Message message, boolean notification, byte notificationTime) {
+    public void editTimeReminder(Map<Long, UserSettings> users, Message message, boolean notification, byte notificationTime) {
         if (notification) users.get(message.getChatId()).setNotificationTime(notificationTime);
         else users.get(message.getChatId()).setNotification(false);
+    }
+
+    public UserSettings getUserSettings(Map<Long, UserSettings> users, Message message){
+        return users.get(message.getChatId());
     }
 
 
