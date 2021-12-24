@@ -24,15 +24,21 @@ public class UserService {
         users.get(message.getChatId()).setDigitAfterComa(digitAfterComa);
     }
 
-    public void changeCurrency(Message message, boolean usd, boolean eur, boolean rub) {
+    public void changeCurrencyUSD(Message message, boolean usd) {
         users.get(message.getChatId()).setUsd(usd);
+    }
+
+    public void changeCurrencyEUR(Message message, boolean eur) {
         users.get(message.getChatId()).setUsd(eur);
+    }
+
+    public void changeCurrencyRUB(Message message, boolean rub) {
         users.get(message.getChatId()).setUsd(rub);
     }
 
     public void editTimeReminder(Message message, boolean notification, byte notificationTime) {
-        if (notification) users.get(message.getChatId()).setNotification(false);
-        else users.get(message.getChatId()).setNotificationTime(notificationTime);
+        if (notification) users.get(message.getChatId()).setNotificationTime(notificationTime);
+        else users.get(message.getChatId()).setNotification(false);
     }
 
 
