@@ -1,9 +1,11 @@
 package ua.goit.moneybot.controller;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Keyboards {
@@ -121,6 +123,30 @@ public class Keyboards {
                                 .callbackData("--------------")
                                 .build()));
         return menu;
+    }
+
+    public List<KeyboardRow> getTimeAlert() {
+        List<KeyboardRow> timeAlertKeyboard = new ArrayList<>();
+        KeyboardRow rowFirst = new KeyboardRow();
+            rowFirst.add("9");
+            rowFirst.add("10");
+            rowFirst.add("11");
+        timeAlertKeyboard.add(rowFirst);
+        KeyboardRow rowSecond = new KeyboardRow();
+            rowSecond.add("12");
+            rowSecond.add("13");
+            rowSecond.add("14");
+        timeAlertKeyboard.add(rowSecond);
+        KeyboardRow rowThird = new KeyboardRow();
+            rowThird.add("15");
+            rowThird.add("16");
+            rowThird.add("17");
+        timeAlertKeyboard.add(rowThird);
+        KeyboardRow rowFourth = new KeyboardRow();
+            rowFourth.add("18");
+            rowFourth.add("Выключить уведомления");
+        timeAlertKeyboard.add(rowFourth);
+        return timeAlertKeyboard;
     }
 
 
