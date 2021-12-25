@@ -8,20 +8,14 @@ import org.telegram.telegrambots.meta.api.objects.MessageEntity;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ua.goit.moneybot.model.Facade;
-import ua.goit.moneybot.model.UserSettings;
-import ua.goit.moneybot.view.ConsoleView;
-import ua.goit.moneybot.view.ConsoleViewImpl;
+import ua.goit.moneybot.model.UserService;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 public class Controller extends TelegramLongPollingBot {
-    ConsoleViewImpl view = new ConsoleView();
     Keyboards keyboards = new Keyboards();
-    Facade facade = new Facade();
-    Map<Long, UserSettings> users = new HashMap<>();
+    UserService userService = UserService.create();
+
 
 
     @Override
@@ -53,7 +47,7 @@ public class Controller extends TelegramLongPollingBot {
         try {
             if(callbackQuery.getData().equals("get_info")) {
                 execute(SendMessage.builder()
-                        .text(facade.getInfo(users, message))
+                        .text(userService.getInfo(message))
                         .chatId(message.getChatId().toString())
                         .build());
             } else if(callbackQuery.getData().equals("settings")){
@@ -94,7 +88,7 @@ public class Controller extends TelegramLongPollingBot {
             if (commandEntity.isPresent()) {
                 String command = message.getText().substring(commandEntity.get().getOffset(), commandEntity.get().getLength());
                 if (command.equals("/start")) {
-                    facade.addUser(users, message);
+                    userService.addUser(message);
                     execute(SendMessage.builder()
                                 .text("Добро пожаловать. Этот бот поможет отслеживать актуальные курсы валют")
                                 .chatId(message.getChatId().toString())

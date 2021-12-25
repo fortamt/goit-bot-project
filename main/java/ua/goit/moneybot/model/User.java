@@ -1,11 +1,11 @@
 package ua.goit.moneybot.model;
 
-import org.telegram.telegrambots.meta.api.objects.User;
-
 import java.util.Objects;
 
-public class UserSettings {
+public class User {
 
+
+    private Long chatId;
     private byte digitAfterComa;
     private boolean usd;
     private boolean eur;
@@ -14,10 +14,19 @@ public class UserSettings {
     private boolean notification;
     private byte notificationTime;
 
-    public UserSettings() {
+    public User(Long chatId) {
+        this.chatId = chatId;
         this.digitAfterComa = 2;
         this.usd = true;
         this.selectedBank = "Monobank";
+    }
+
+    public Long getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(Long chatId) {
+        this.chatId = chatId;
     }
 
     public byte getDigitAfterComa() {
@@ -80,7 +89,7 @@ public class UserSettings {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserSettings that = (UserSettings) o;
+        User that = (User) o;
         return digitAfterComa == that.digitAfterComa && usd == that.usd && eur == that.eur && rub == that.rub && notification == that.notification && notificationTime == that.notificationTime && Objects.equals(selectedBank, that.selectedBank);
     }
 
