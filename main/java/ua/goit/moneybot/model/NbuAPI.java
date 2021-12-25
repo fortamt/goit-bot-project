@@ -30,11 +30,11 @@ public class NbuAPI {
         NbuInfo rub = getRubCurrencyFromList(nbuInfos);
         List<BankResponse> bankResponses = new ArrayList<>();
         bankResponses.add(new BankResponse("NBU", CurrencyEnum.USD.getCodeString(),
-                new BigDecimal(String.valueOf(usd.getRate()))));
+                new BigDecimal(String.valueOf(usd.getRate())), new BigDecimal(String.valueOf(usd.getRate()))));
         bankResponses.add(new BankResponse("NBU", CurrencyEnum.EUR.getCodeString(),
-                new BigDecimal(String.valueOf(eur.getRate()))));
+                new BigDecimal(String.valueOf(eur.getRate())), new BigDecimal(String.valueOf(eur.getRate()))));
         bankResponses.add(new BankResponse("NBU", CurrencyEnum.RUB.getCodeString(),
-                new BigDecimal(String.valueOf(rub.getRate()))));
+                new BigDecimal(String.valueOf(rub.getRate())), new BigDecimal(String.valueOf(rub.getRate()))));
         return bankResponses;
     }
 
