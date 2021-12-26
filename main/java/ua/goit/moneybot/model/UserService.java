@@ -87,6 +87,7 @@ public class UserService {
     }
 
     public void changeRounding(Message message, byte digitAfterComa) {
+        getUser(message).setDigitAfterComa(digitAfterComa);
     }
 
     public void changeCurrencyUSD(Message message) {
