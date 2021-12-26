@@ -13,9 +13,9 @@ public class UserService {
 
     private static UserService userService;
 
-    private List<User> userList;
+    public List<User> userList;
 
-    private UserService(){
+    public UserService(){
         this.userList = new ArrayList<>();
     }
 
