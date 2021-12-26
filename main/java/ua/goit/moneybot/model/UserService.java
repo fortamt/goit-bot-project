@@ -10,7 +10,7 @@ import java.util.Map;
 public class UserService {
     //private final Gson GSON = new Gson();
 
-    Map<Long, UserSettings> users = new HashMap<>();
+    public Map<Long, UserSettings> users = new HashMap<>();
 
     public void addUser(Message message, UserSettings userSettings) {
         users.put(message.getChatId(), userSettings);

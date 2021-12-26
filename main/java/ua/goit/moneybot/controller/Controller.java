@@ -10,6 +10,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMa
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRemove;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import ua.goit.moneybot.model.UserService;
 import ua.goit.moneybot.view.ConsoleView;
 import ua.goit.moneybot.view.ConsoleViewImpl;
 
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class Controller extends TelegramLongPollingBot {
     ConsoleViewImpl view = new ConsoleView();
     Keyboards keyboards = new Keyboards();
+    UserService userService = new UserService();
 
     @Override
     public String getBotUsername() {
@@ -81,6 +83,12 @@ public class Controller extends TelegramLongPollingBot {
                         .chatId(message.getChatId().toString())
                         .replyMarkup(ReplyKeyboardMarkup.builder().keyboard(keyboards.getTimeAlert()).build())
                         .build());
+            }else if (callbackQuery.getData().equals("/2")) {
+               userService.changeRounding(message, (byte) 2);
+            }else if (callbackQuery.getData().equals("/3")) {
+                userService.changeRounding(message, (byte) 3);
+            }else if (callbackQuery.getData().equals("/4")) {
+                userService.changeRounding(message, (byte) 4);
             }
 
         } catch (TelegramApiException e) {

@@ -62,19 +62,19 @@ public class Keyboards {
                 Arrays.asList(
                         InlineKeyboardButton.builder()
                                 .text("2")
-                                .callbackData("--------------")
+                                .callbackData("/2")
                                 .build()));
         menu.add(
                 Arrays.asList(
                         InlineKeyboardButton.builder()
                                 .text("3")
-                                .callbackData("--------------")
+                                .callbackData("/3")
                                 .build()));
         menu.add(
                 Arrays.asList(
                         InlineKeyboardButton.builder()
                                 .text("4")
-                                .callbackData("--------------")
+                                .callbackData("/4")
                                 .build()));
         return menu;
     }
