@@ -1,20 +1,24 @@
 package ua.goit.moneybot.model;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class CashService {
-    private List<BankResponse> monobankResponse = new ArrayList<>();
-    private List<BankResponse> privatBankResponse = new ArrayList<>();
-    private List<BankResponse> nbuResponse = new ArrayList<>();
+    private CopyOnWriteArrayList<BankResponse> monobankResponse = new CopyOnWriteArrayList<>();
+    private CopyOnWriteArrayList<BankResponse> privatBankResponse = new CopyOnWriteArrayList<>();
+    private CopyOnWriteArrayList<BankResponse> nbuResponse = new CopyOnWriteArrayList<>();
     ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
     private boolean monobankRateIsValid = false;
     private boolean privatbankRateIsValid = false;
     private boolean nbuRateIsValid = false;
-
 
     public void monobankRateFlush() {
         monobankResponse.clear();
@@ -33,7 +37,7 @@ public class CashService {
 
     public List<BankResponse> getCashedMonobankCurrency() {
         MonobankAPI monobankAPI = new MonobankAPI();
-        if (monobankRateIsValid == false) {
+        if (monobankRateIsValid == false | monobankResponse.size() == 0) {
             monobankRateIsValid = true;
             try {
                 monobankResponse.addAll(monobankAPI.getActualCurrency());
@@ -45,12 +49,14 @@ public class CashService {
         }
         Runnable monobankRateFlushRunnable = () -> monobankRateFlush();
         executor.schedule(monobankRateFlushRunnable, 5, TimeUnit.SECONDS);
-        return monobankResponse;
+        ArrayList<BankResponse> bankResponse = new ArrayList<>();
+        bankResponse.addAll(monobankResponse);
+        return bankResponse;
     }
 
     public List<BankResponse> getCashedPrivatBankCurrency() {
         MonobankAPI privatBankAPI = new MonobankAPI();
-        if (privatbankRateIsValid == false) {
+        if (privatbankRateIsValid == false | privatBankResponse.size() == 0) {
             privatbankRateIsValid = true;
             try {
                 privatBankResponse.addAll(privatBankAPI.getActualCurrency());
@@ -62,12 +68,14 @@ public class CashService {
         }
         Runnable privatBankRateFlushRunnable = () -> privatBankRateFlush();
         executor.schedule(privatBankRateFlushRunnable, 5, TimeUnit.SECONDS);
-        return privatBankResponse;
+        ArrayList<BankResponse> bankResponse = new ArrayList<>();
+        bankResponse.addAll(privatBankResponse);
+        return bankResponse;
     }
 
     public List<BankResponse> getCashedNBUCurrency() {
         MonobankAPI nbuAPI = new MonobankAPI();
-        if (nbuRateIsValid == false) {
+        if (nbuRateIsValid == false | nbuResponse.size() == 0) {
             nbuRateIsValid = true;
             try {
                 nbuResponse.addAll(nbuAPI.getActualCurrency());
@@ -79,6 +87,8 @@ public class CashService {
         }
         Runnable nbuRateFlushRunnable = () -> nbuRateFlush();
         executor.schedule(nbuRateFlushRunnable, 5, TimeUnit.SECONDS);
-        return nbuResponse;
+        ArrayList<BankResponse> bankResponse = new ArrayList<>();
+        bankResponse.addAll(nbuResponse);
+        return bankResponse;
     }
 }
