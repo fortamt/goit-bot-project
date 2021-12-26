@@ -55,7 +55,7 @@ public class CashService {
     }
 
     public List<BankResponse> getCashedPrivatBankCurrency() {
-        MonobankAPI privatBankAPI = new MonobankAPI();
+        PrivatBankAPI privatBankAPI = new PrivatBankAPI();
         if (privatbankRateIsValid == false | privatBankResponse.size() == 0) {
             privatbankRateIsValid = true;
             try {
@@ -74,7 +74,7 @@ public class CashService {
     }
 
     public List<BankResponse> getCashedNBUCurrency() {
-        MonobankAPI nbuAPI = new MonobankAPI();
+        NbuAPI nbuAPI = new NbuAPI();
         if (nbuRateIsValid == false | nbuResponse.size() == 0) {
             nbuRateIsValid = true;
             try {
