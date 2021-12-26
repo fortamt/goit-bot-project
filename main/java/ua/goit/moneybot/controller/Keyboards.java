@@ -59,24 +59,24 @@ public class Keyboards {
         return menu;
     }
 
-    public List<List<InlineKeyboardButton>> getDigitMenu(){
+    public List<List<InlineKeyboardButton>> getDigitMenu(Message message){
         List<List<InlineKeyboardButton>> menu = new ArrayList<>();
         menu.add(
                 Arrays.asList(
                         InlineKeyboardButton.builder()
-                                .text("2")
+                                .text(userService.getUser(message).getDigitAfterComa() == (byte) 2 ? "✅2" : "2")
                                 .callbackData("/2")
                                 .build()));
         menu.add(
                 Arrays.asList(
                         InlineKeyboardButton.builder()
-                                .text("3")
+                                .text(userService.getUser(message).getDigitAfterComa() == (byte) 3 ? "✅3" : "3")
                                 .callbackData("/3")
                                 .build()));
         menu.add(
                 Arrays.asList(
                         InlineKeyboardButton.builder()
-                                .text("4")
+                                .text(userService.getUser(message).getDigitAfterComa() == (byte) 4 ? "✅4" : "4")
                                 .callbackData("/4")
                                 .build()));
         return menu;

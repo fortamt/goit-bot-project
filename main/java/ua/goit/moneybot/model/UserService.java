@@ -4,6 +4,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -57,24 +58,24 @@ public class UserService {
         if(user.isUsd()){
             for(BankResponse bankResponse : bank){
                 if(bankResponse.getCurrency().equals(CurrencyEnum.USD.getCodeString())){
-                    result.append("\nUSD/UAH").append("\nПокупка: ").append(new BigDecimal(bankResponse.getBuyRate().toString()))
-                            .append("\nПродажа: ").append(new BigDecimal(bankResponse.getSellRate().toString()));
+                    result.append("\nUSD/UAH").append("\nПокупка: ").append(new BigDecimal(bankResponse.getBuyRate().setScale(user.getDigitAfterComa(), RoundingMode.DOWN).toString()))
+                            .append("\nПродажа: ").append(new BigDecimal(bankResponse.getSellRate().setScale(user.getDigitAfterComa(), RoundingMode.DOWN).toString()));
                 }
             }
         }
         if(user.isEur()){
             for(BankResponse bankResponse : bank){
                 if(bankResponse.getCurrency().equals(CurrencyEnum.EUR.getCodeString())){
-                    result.append("\nEUR/UAH").append("\nПокупка: ").append(new BigDecimal(bankResponse.getBuyRate().toString()))
-                            .append("\nПродажа: ").append(new BigDecimal(bankResponse.getSellRate().toString()));
+                    result.append("\nEUR/UAH").append("\nПокупка: ").append(new BigDecimal(bankResponse.getBuyRate().setScale(user.getDigitAfterComa(), RoundingMode.DOWN).toString()))
+                            .append("\nПродажа: ").append(new BigDecimal(bankResponse.getSellRate().setScale(user.getDigitAfterComa(), RoundingMode.DOWN).toString()));
                 }
             }
         }
         if(user.isRub()){
             for(BankResponse bankResponse : bank){
                 if(bankResponse.getCurrency().equals(CurrencyEnum.RUB.getCodeString())){
-                    result.append("\nRUB/UAH").append("\nПокупка: ").append(new BigDecimal(bankResponse.getBuyRate().toString()))
-                            .append("\nПродажа: ").append(new BigDecimal(bankResponse.getSellRate().toString()));
+                    result.append("\nRUB/UAH").append("\nПокупка: ").append(new BigDecimal(bankResponse.getBuyRate().setScale(user.getDigitAfterComa(), RoundingMode.DOWN).toString()))
+                            .append("\nПродажа: ").append(new BigDecimal(bankResponse.getSellRate().setScale(user.getDigitAfterComa(), RoundingMode.DOWN).toString()));
                 }
             }
         }

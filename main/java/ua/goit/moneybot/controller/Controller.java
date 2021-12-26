@@ -68,7 +68,7 @@ public class Controller extends TelegramLongPollingBot {
                 execute(SendMessage.builder()
                         .text("Выберите количество знаков после запятой")
                         .chatId(message.getChatId().toString())
-                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getDigitMenu()).build())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getDigitMenu(message)).build())
                         .build());
             }
             if(callbackQuery.getData().equals("banks")){
@@ -111,12 +111,27 @@ public class Controller extends TelegramLongPollingBot {
             }
             if(callbackQuery.getData().equals("/2")){
                 userService.changeRounding(message, (byte) 2);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getDigitMenu(message)).build())
+                        .build());
             }
             if(callbackQuery.getData().equals("/3")){
                 userService.changeRounding(message, (byte) 3);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getDigitMenu(message)).build())
+                        .build());
             }
             if(callbackQuery.getData().equals("/4")){
                 userService.changeRounding(message, (byte) 4);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getDigitMenu(message)).build())
+                        .build());
             }
         } catch (TelegramApiException e) {
             e.printStackTrace();
