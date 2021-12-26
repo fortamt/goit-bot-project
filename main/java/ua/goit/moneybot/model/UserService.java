@@ -41,52 +41,52 @@ public class UserService {
                 userTemp = user;
             }
         }
-        if(userTemp.equals(null)){
+        if(userTemp == (null)){
             userList.add(new User(message.getChatId()));
         }
     }
 
     public String getInfo(Message message){
+        BigDecimal usdBuy = new BigDecimal("0.0");
+        BigDecimal usdSell = new BigDecimal("0.0");
         User user = getUser(message);
         StringBuilder result = new StringBuilder();
+        Facade facade = new Facade();
+        List<BankResponse> bank = facade.getResponseFromBank(getUser(message));
+        result.append("Курс в ").append(user.getSelectedBank());
         if(user.isUsd()){
-            result.append("Курс в ").append(user.getSelectedBank()).append("USD/UAH")
-                    .append("\nПокупка: ").append(getUsdBuy(message))
-                    .append("\nПродажа: ").append(getUsdSell(message));
+            for(BankResponse bankResponse : bank){
+                if(bankResponse.getCurrency().equals(CurrencyEnum.USD.getCodeString())){
+                    result.append("\nUSD/UAH").append("\nПокупка: ").append(new BigDecimal(bankResponse.getBuyRate().toString()))
+                            .append("\nПродажа: ").append(new BigDecimal(bankResponse.getSellRate().toString()));
+                }
+            }
+        }
+        if(user.isEur()){
+            for(BankResponse bankResponse : bank){
+                if(bankResponse.getCurrency().equals(CurrencyEnum.EUR.getCodeString())){
+                    result.append("\nEUR/UAH").append("\nПокупка: ").append(new BigDecimal(bankResponse.getBuyRate().toString()))
+                            .append("\nПродажа: ").append(new BigDecimal(bankResponse.getSellRate().toString()));
+                }
+            }
+        }
+        if(user.isRub()){
+            for(BankResponse bankResponse : bank){
+                if(bankResponse.getCurrency().equals(CurrencyEnum.RUB.getCodeString())){
+                    result.append("\nRUB/UAH").append("\nПокупка: ").append(new BigDecimal(bankResponse.getBuyRate().toString()))
+                            .append("\nПродажа: ").append(new BigDecimal(bankResponse.getSellRate().toString()));
+                }
+            }
         }
         return result.toString();
     }
 
-    private String getUsdBuy(Message message){
-        BigDecimal usdBuy = new BigDecimal("0.0");
-        Facade facade = new Facade();
-        List<BankResponse> bank = facade.getResponseFromBank(getUser(message));
-        for(BankResponse bankResponse : bank){
-            if(bankResponse.getBankName().equals(getUser(message).getSelectedBank())){
-                usdBuy = new BigDecimal(bankResponse.getBuyRate().toString());
-            }
-        }
-        return usdBuy.toString();
-    }
-
-    private String getUsdSell(Message message){
-        BigDecimal usdSell = new BigDecimal("0.0");
-        Facade facade = new Facade();
-        List<BankResponse> bank = facade.getResponseFromBank(getUser(message));
-        for(BankResponse bankResponse : bank){
-            if(bankResponse.getBankName().equals(getUser(message).getSelectedBank())){
-                usdSell = new BigDecimal(bankResponse.getSellRate().toString());
-            }
-        }
-        return usdSell.toString();
-    }
 
     public void changeBank(Message message, String selectedBank) {
 
     }
 
     public void changeRounding(Message message, byte digitAfterComa) {
-
     }
 
     public void changeCurrencyUSD(Message message, boolean usd) {

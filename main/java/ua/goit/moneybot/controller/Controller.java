@@ -50,6 +50,11 @@ public class Controller extends TelegramLongPollingBot {
                         .text(userService.getInfo(message))
                         .chatId(message.getChatId().toString())
                         .build());
+                execute(SendMessage.builder()
+                        .text("Добро пожаловать. Этот бот поможет отслеживать актуальные курсы валют")
+                        .chatId(message.getChatId().toString())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getMainMenu()).build())
+                        .build());
             } else if(callbackQuery.getData().equals("settings")){
                 execute(SendMessage.builder()
                         .text("Настройки")
