@@ -23,7 +23,7 @@ public class PrivatBankAPI{
                 .GET()
                 .build();
         HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
-        List<PrivatBankInfo> privat =  GSON.fromJson(response.body(), new TypeToken<List<MonobankInfo>>(){}.getType());
+        List<PrivatBankInfo> privat =  GSON.fromJson(response.body(), new TypeToken<List<PrivatBankInfo>>(){}.getType());
         PrivatBankInfo usd = getUsdCurrencyFromList(privat);
         PrivatBankInfo eur = getEurCurrencyFromList(privat);
         PrivatBankInfo rub = getRubCurrencyFromList(privat);
@@ -40,21 +40,21 @@ public class PrivatBankAPI{
 
     private PrivatBankInfo getUsdCurrencyFromList(List<PrivatBankInfo> privat) {
         return privat.stream()
-                .filter(e -> CurrencyEnum.USD.getCodeString() == e.getCcy())
+                .filter(e -> CurrencyEnum.USD.getCodeString().equals(e.getCcy()))
                 .findFirst()
                 .orElse(null);
     }
 
     private PrivatBankInfo getEurCurrencyFromList(List<PrivatBankInfo> privat) {
         return privat.stream()
-                .filter(e -> CurrencyEnum.EUR.getCodeString() == e.getCcy())
+                .filter(e -> CurrencyEnum.EUR.getCodeString().equals(e.getCcy()))
                 .findFirst()
                 .orElse(null);
     }
 
     private PrivatBankInfo getRubCurrencyFromList(List<PrivatBankInfo> privat) {
         return privat.stream()
-                .filter(e -> CurrencyEnum.RUB.getCodeString() == e.getCcy())
+                .filter(e -> "RUR".equals(e.getCcy()))
                 .findFirst()
                 .orElse(null);
     }

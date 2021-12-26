@@ -56,6 +56,12 @@ public class Keyboards {
                                 .text("Время оповещений")
                                 .callbackData("schedule")
                                 .build()));
+        menu.add(
+                Arrays.asList(
+                        InlineKeyboardButton.builder()
+                                .text("На главную")
+                                .callbackData("/start")
+                                .build()));
         return menu;
     }
 
@@ -79,28 +85,41 @@ public class Keyboards {
                                 .text(userService.getUser(message).getDigitAfterComa() == (byte) 4 ? "✅4" : "4")
                                 .callbackData("/4")
                                 .build()));
+        menu.add(
+                Arrays.asList(
+                        InlineKeyboardButton.builder()
+                                .text("На главную")
+                                .callbackData("/start")
+                                .build()));
         return menu;
+
     }
 
-    public List<List<InlineKeyboardButton>> getBankMenu(){
+    public List<List<InlineKeyboardButton>> getBankMenu(Message message){
         List<List<InlineKeyboardButton>> menu = new ArrayList<>();
         menu.add(
                 Arrays.asList(
                         InlineKeyboardButton.builder()
-                                .text("Monobank")
-                                .callbackData("--------------")
+                                .text(userService.getUser(message).getSelectedBank().equals("Monobank") ? "✅Monobank" : "Monobank")
+                                .callbackData("Monobank")
                                 .build()));
         menu.add(
                 Arrays.asList(
                         InlineKeyboardButton.builder()
-                                .text("PrivatBank")
-                                .callbackData("--------------")
+                                .text(userService.getUser(message).getSelectedBank().equals("PrivatBank") ? "✅PrivatBank" : "PrivatBank")
+                                .callbackData("PrivatBank")
                                 .build()));
         menu.add(
                 Arrays.asList(
                         InlineKeyboardButton.builder()
-                                .text("NBU")
-                                .callbackData("--------------")
+                                .text(userService.getUser(message).getSelectedBank().equals("NBU") ? "✅NBU" : "NBU")
+                                .callbackData("NBU")
+                                .build()));
+        menu.add(
+                Arrays.asList(
+                        InlineKeyboardButton.builder()
+                                .text("На главную")
+                                .callbackData("/start")
                                 .build()));
         return menu;
     }
@@ -124,6 +143,12 @@ public class Keyboards {
                         InlineKeyboardButton.builder()
                                 .text(userService.getUser(message).isRub() ? "✅RUB" : "RUB")
                                 .callbackData("RUB")
+                                .build()));
+        menu.add(
+                Arrays.asList(
+                        InlineKeyboardButton.builder()
+                                .text("На главную")
+                                .callbackData("/start")
                                 .build()));
         return menu;
     }

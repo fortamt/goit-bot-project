@@ -84,7 +84,7 @@ public class UserService {
 
 
     public void changeBank(Message message, String selectedBank) {
-
+        getUser(message).setSelectedBank(selectedBank);
     }
 
     public void changeRounding(Message message, byte digitAfterComa) {
@@ -92,28 +92,25 @@ public class UserService {
     }
 
     public void changeCurrencyUSD(Message message) {
-        if(getUser(message).isUsd() == true){
+        if(getUser(message).isUsd()){
             getUser(message).setUsd(false);
-            return;
-        } else if(getUser(message).isUsd() == false){
+        } else if(!getUser(message).isUsd()){
             getUser(message).setUsd(true);
         }
     }
 
     public void changeCurrencyEUR(Message message) {
-        if(getUser(message).isEur() == true){
+        if(getUser(message).isEur()){
             getUser(message).setEur(false);
-            return;
-        } else if(getUser(message).isEur() == false){
+        } else if(!getUser(message).isEur()){
             getUser(message).setEur(true);
         }
     }
 
     public void changeCurrencyRUB(Message message) {
-        if(getUser(message).isRub() == true){
+        if(getUser(message).isRub()){
             getUser(message).setRub(false);
-            return;
-        } else if(getUser(message).isRub() == false){
+        } else if(!getUser(message).isRub()){
             getUser(message).setRub(true);
         }
     }

@@ -52,7 +52,7 @@ public class Controller extends TelegramLongPollingBot {
                         .chatId(message.getChatId().toString())
                         .build());
                 execute(SendMessage.builder()
-                        .text("Добро пожаловать. Этот бот поможет отслеживать актуальные курсы валют")
+                        .text("Главное меню")
                         .chatId(message.getChatId().toString())
                         .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getMainMenu()).build())
                         .build());
@@ -75,7 +75,7 @@ public class Controller extends TelegramLongPollingBot {
                 execute(SendMessage.builder()
                         .text("Выберите желаемый банк. Только один")
                         .chatId(message.getChatId().toString())
-                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getBankMenu()).build())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getBankMenu(message)).build())
                         .build());
             }
             if(callbackQuery.getData().equals("currency")){
@@ -131,6 +131,37 @@ public class Controller extends TelegramLongPollingBot {
                         .chatId(message.getChatId().toString())
                         .messageId(message.getMessageId())
                         .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getDigitMenu(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("Monobank")){
+                userService.changeBank(message, "Monobank");
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getBankMenu(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("PrivatBank")){
+                userService.changeBank(message, "PrivatBank");
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getBankMenu(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("NBU")){
+                userService.changeBank(message, "NBU");
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getBankMenu(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("/start")){
+                execute(SendMessage.builder()
+                        .text("Добро пожаловать. Этот бот поможет отслеживать актуальные курсы валют")
+                        .chatId(message.getChatId().toString())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getMainMenu()).build())
                         .build());
             }
         } catch (TelegramApiException e) {
