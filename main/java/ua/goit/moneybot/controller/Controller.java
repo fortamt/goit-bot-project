@@ -30,6 +30,7 @@ public class Controller extends TelegramLongPollingBot {
     }
 
 
+
     @Override
     public void onUpdateReceived(Update update) {         //мониторит ввод в чат (наблюдатель)
         if(update.hasCallbackQuery()){
@@ -75,7 +76,22 @@ public class Controller extends TelegramLongPollingBot {
                 execute(SendMessage.builder()
                         .text("Выберите желаемый банк. Только один")
                         .chatId(message.getChatId().toString())
-                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getBankMenu()).build())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getBankMenu(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("Monobank") | callbackQuery.getData().equals("PrivatBank") | callbackQuery.getData().equals("NBU")){
+                userService.changeBank(message, callbackQuery.getData());
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getBankMenu(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("bankSelect")){
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getMainMenu()).build())
                         .build());
             }
             if(callbackQuery.getData().equals("currency")){
