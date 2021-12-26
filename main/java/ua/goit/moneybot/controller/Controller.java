@@ -109,6 +109,15 @@ public class Controller extends TelegramLongPollingBot {
                         .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getCurrencyMenu(message)).build())
                         .build());
             }
+            if(callbackQuery.getData().equals("/2")){
+                userService.changeRounding(message, (byte) 2);
+            }
+            if(callbackQuery.getData().equals("/3")){
+                userService.changeRounding(message, (byte) 3);
+            }
+            if(callbackQuery.getData().equals("/4")){
+                userService.changeRounding(message, (byte) 4);
+            }
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
