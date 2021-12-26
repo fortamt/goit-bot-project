@@ -17,6 +17,8 @@ public class BankResponse {
         this.sellRate = sellRate;
     }
 
+
+
     public String getBankName() {
         return bankName;
     }
