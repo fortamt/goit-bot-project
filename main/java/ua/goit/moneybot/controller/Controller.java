@@ -2,6 +2,7 @@ package ua.goit.moneybot.controller;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageReplyMarkup;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.MessageEntity;
@@ -55,29 +56,57 @@ public class Controller extends TelegramLongPollingBot {
                         .chatId(message.getChatId().toString())
                         .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getMainMenu()).build())
                         .build());
-            } else if(callbackQuery.getData().equals("settings")){
+            }
+            if(callbackQuery.getData().equals("settings")){
                 execute(SendMessage.builder()
                         .text("Настройки")
                         .chatId(message.getChatId().toString())
                         .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getSettingsMenu()).build())
                         .build());
-            } else if(callbackQuery.getData().equals("digitAfterComa")){
+            }
+            if(callbackQuery.getData().equals("digitAfterComa")){
                 execute(SendMessage.builder()
                         .text("Выберите количество знаков после запятой")
                         .chatId(message.getChatId().toString())
                         .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getDigitMenu()).build())
                         .build());
-            } else if(callbackQuery.getData().equals("banks")){
+            }
+            if(callbackQuery.getData().equals("banks")){
                 execute(SendMessage.builder()
                         .text("Выберите желаемый банк. Только один")
                         .chatId(message.getChatId().toString())
                         .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getBankMenu()).build())
                         .build());
-            } else if(callbackQuery.getData().equals("currency")){
+            }
+            if(callbackQuery.getData().equals("currency")){
                 execute(SendMessage.builder()
                         .text("Выберите нужные курсы, можно несколько")
                         .chatId(message.getChatId().toString())
-                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getCurrencyMenu()).build())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getCurrencyMenu(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("USD")){
+                userService.changeCurrencyUSD(message);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getCurrencyMenu(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("EUR")){
+                userService.changeCurrencyEUR(message);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getCurrencyMenu(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("RUB")){
+                userService.changeCurrencyRUB(message);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getCurrencyMenu(message)).build())
                         .build());
             }
         } catch (TelegramApiException e) {

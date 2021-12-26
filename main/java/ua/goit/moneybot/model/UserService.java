@@ -89,16 +89,31 @@ public class UserService {
     public void changeRounding(Message message, byte digitAfterComa) {
     }
 
-    public void changeCurrencyUSD(Message message, boolean usd) {
-
+    public void changeCurrencyUSD(Message message) {
+        if(getUser(message).isUsd() == true){
+            getUser(message).setUsd(false);
+            return;
+        } else if(getUser(message).isUsd() == false){
+            getUser(message).setUsd(true);
+        }
     }
 
-    public void changeCurrencyEUR(Message message, boolean eur) {
-
+    public void changeCurrencyEUR(Message message) {
+        if(getUser(message).isEur() == true){
+            getUser(message).setEur(false);
+            return;
+        } else if(getUser(message).isEur() == false){
+            getUser(message).setEur(true);
+        }
     }
 
-    public void changeCurrencyRUB(Message message, boolean rub) {
-
+    public void changeCurrencyRUB(Message message) {
+        if(getUser(message).isRub() == true){
+            getUser(message).setRub(false);
+            return;
+        } else if(getUser(message).isRub() == false){
+            getUser(message).setRub(true);
+        }
     }
 
 //    public void editTimeReminder(Message message, boolean notification, byte notificationTime) {

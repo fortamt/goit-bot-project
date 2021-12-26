@@ -1,14 +1,17 @@
 package ua.goit.moneybot.controller;
 
+import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
+import ua.goit.moneybot.model.UserService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Keyboards {
+
+    UserService userService = UserService.create();
 
     public List<List<InlineKeyboardButton>> getMainMenu(){
         List<List<InlineKeyboardButton>> menu = new ArrayList<>();
@@ -102,25 +105,25 @@ public class Keyboards {
         return menu;
     }
 
-    public List<List<InlineKeyboardButton>> getCurrencyMenu() {
+    public List<List<InlineKeyboardButton>> getCurrencyMenu(Message message) {
         List<List<InlineKeyboardButton>> menu = new ArrayList<>();
         menu.add(
                 Arrays.asList(
                         InlineKeyboardButton.builder()
-                                .text("USD")
-                                .callbackData("--------------")
+                                .text(userService.getUser(message).isUsd() ? "✅USD" : "USD")
+                                .callbackData("USD")
                                 .build()));
         menu.add(
                 Arrays.asList(
                         InlineKeyboardButton.builder()
-                                .text("EUR")
-                                .callbackData("--------------")
+                                .text(userService.getUser(message).isEur() ? "✅EUR" : "EUR")
+                                .callbackData("EUR")
                                 .build()));
         menu.add(
                 Arrays.asList(
                         InlineKeyboardButton.builder()
-                                .text("RUB")
-                                .callbackData("--------------")
+                                .text(userService.getUser(message).isRub() ? "✅RUB" : "RUB")
+                                .callbackData("RUB")
                                 .build()));
         return menu;
     }
