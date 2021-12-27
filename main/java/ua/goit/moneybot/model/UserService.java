@@ -12,6 +12,8 @@ import java.util.Map;
 public class UserService {
 
     private static UserService userService;
+    private Facade facade = new Facade();
+
 
     public static UserService getUserService() {
         return userService;
@@ -60,7 +62,6 @@ public class UserService {
         BigDecimal usdSell = new BigDecimal("0.0");
         User user = getUser(message);
         StringBuilder result = new StringBuilder();
-        Facade facade = new Facade();
         List<BankResponse> bank = facade.getResponseFromBank(getUser(message));
         result.append("Курс в ").append(user.getSelectedBank());
         if(user.isUsd()){

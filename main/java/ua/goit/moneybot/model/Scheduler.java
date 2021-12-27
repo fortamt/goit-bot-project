@@ -35,8 +35,6 @@ public class Scheduler {
                 if (delay < 0) {
                     delay = delay + 24 * 60 * 60 * 1000;
                 }
-                System.out.println(delay);
-                System.out.println(date);
 
                 Runnable runnable = () -> {
                     try {
