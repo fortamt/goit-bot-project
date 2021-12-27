@@ -8,7 +8,9 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.MessageEntity;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import ua.goit.moneybot.model.Scheduler;
 import ua.goit.moneybot.model.UserService;
 
 import java.util.Optional;
@@ -28,6 +30,7 @@ public class Controller extends TelegramLongPollingBot {
     public String getBotToken() {
         return "5003580560:AAE9p7Ohh5rFGGTomwmqFBqp5H35nm0NySs";  // сюда свой токен
     }
+
 
 
     @Override
@@ -83,6 +86,13 @@ public class Controller extends TelegramLongPollingBot {
                         .text("Выберите нужные курсы, можно несколько")
                         .chatId(message.getChatId().toString())
                         .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getCurrencyMenu(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("schedule")){
+                execute(SendMessage.builder()
+                        .text("Выберете время оповещения")
+                        .chatId(message.getChatId().toString())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getTimeAlert(message)).build())
                         .build());
             }
             if(callbackQuery.getData().equals("USD")){
@@ -155,6 +165,88 @@ public class Controller extends TelegramLongPollingBot {
                         .chatId(message.getChatId().toString())
                         .messageId(message.getMessageId())
                         .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getBankMenu(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("9:00")){
+                userService.changeSchedule(message, (byte) 9);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getTimeAlert(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("10:00")){
+                userService.changeSchedule(message, (byte) 10);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getTimeAlert(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("11:00")){
+                userService.changeSchedule(message, (byte) 11);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getTimeAlert(message)).build())
+                        .build());
+            }if(callbackQuery.getData().equals("12:00")){
+                userService.changeSchedule(message, (byte) 12);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getTimeAlert(message)).build())
+                        .build());
+            }if(callbackQuery.getData().equals("13:00")){
+                userService.changeSchedule(message, (byte) 13);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getTimeAlert(message)).build())
+                        .build());
+            }if(callbackQuery.getData().equals("14:00")){
+                userService.changeSchedule(message, (byte) 14);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getTimeAlert(message)).build())
+                        .build());
+            }if(callbackQuery.getData().equals("15:00")){
+                userService.changeSchedule(message, (byte) 15);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getTimeAlert(message)).build())
+                        .build());
+            }if(callbackQuery.getData().equals("16:00")){
+                userService.changeSchedule(message, (byte) 16);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getTimeAlert(message)).build())
+                        .build());
+            }if(callbackQuery.getData().equals("17:00")){
+                userService.changeSchedule(message, (byte) 17);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getTimeAlert(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("18:00")){
+                userService.changeSchedule(message, (byte) 18);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getTimeAlert(message)).build())
+                        .build());
+            }
+            if(callbackQuery.getData().equals("0")){
+                userService.changeSchedule(message, (byte) 0);
+                execute(EditMessageReplyMarkup.builder()
+                        .chatId(message.getChatId().toString())
+                        .messageId(message.getMessageId())
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(keyboards.getTimeAlert(message)).build())
                         .build());
             }
             if(callbackQuery.getData().equals("/start")){

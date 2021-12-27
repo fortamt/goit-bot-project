@@ -16,7 +16,6 @@ public class MonobankAPI{
     private final HttpClient CLIENT = HttpClient.newHttpClient();
     private final Gson GSON = new Gson();
 
-
     public List<BankResponse> getActualCurrency() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://api.monobank.ua/bank/currency"))

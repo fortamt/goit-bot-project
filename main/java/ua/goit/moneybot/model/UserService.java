@@ -13,6 +13,14 @@ public class UserService {
 
     private static UserService userService;
 
+    public static UserService getUserService() {
+        return userService;
+    }
+
+    public List<User> getUserList() {
+        return userList;
+    }
+
     private List<User> userList;
 
     private UserService(){
@@ -85,6 +93,10 @@ public class UserService {
 
     public void changeBank(Message message, String selectedBank) {
         getUser(message).setSelectedBank(selectedBank);
+    }
+
+    public void changeSchedule(Message message, byte time) {
+        getUser(message).setNotificationTime(time);
     }
 
     public void changeRounding(Message message, byte digitAfterComa) {

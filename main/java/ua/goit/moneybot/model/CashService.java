@@ -48,7 +48,7 @@ public class CashService {
             }
         }
         Runnable monobankRateFlushRunnable = () -> monobankRateFlush();
-        executor.schedule(monobankRateFlushRunnable, 5, TimeUnit.SECONDS);
+        executor.schedule(monobankRateFlushRunnable, 5, TimeUnit.MINUTES);
         ArrayList<BankResponse> bankResponse = new ArrayList<>();
         bankResponse.addAll(monobankResponse);
         return bankResponse;
@@ -67,7 +67,7 @@ public class CashService {
             }
         }
         Runnable privatBankRateFlushRunnable = () -> privatBankRateFlush();
-        executor.schedule(privatBankRateFlushRunnable, 5, TimeUnit.SECONDS);
+        executor.schedule(privatBankRateFlushRunnable, 5, TimeUnit.MINUTES);
         ArrayList<BankResponse> bankResponse = new ArrayList<>();
         bankResponse.addAll(privatBankResponse);
         return bankResponse;
@@ -86,7 +86,7 @@ public class CashService {
             }
         }
         Runnable nbuRateFlushRunnable = () -> nbuRateFlush();
-        executor.schedule(nbuRateFlushRunnable, 5, TimeUnit.SECONDS);
+        executor.schedule(nbuRateFlushRunnable, 5, TimeUnit.MINUTES);
         ArrayList<BankResponse> bankResponse = new ArrayList<>();
         bankResponse.addAll(nbuResponse);
         return bankResponse;

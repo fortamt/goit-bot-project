@@ -101,7 +101,8 @@ public class User {
     @Override
     public String toString() {
         return "UserSettings{" +
-                "digitAfterComa=" + digitAfterComa +
+                "chatID=" + chatId +
+                ", digitAfterComa=" + digitAfterComa +
                 ", usd=" + usd +
                 ", eur=" + eur +
                 ", rub=" + rub +
