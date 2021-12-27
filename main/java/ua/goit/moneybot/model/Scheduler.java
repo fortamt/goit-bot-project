@@ -1,19 +1,11 @@
 package ua.goit.moneybot.model;
 
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Message;
-import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ua.goit.moneybot.controller.Application;
-import ua.goit.moneybot.controller.Controller;
 
-import java.sql.Time;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.*;
-import java.util.concurrent.Delayed;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
