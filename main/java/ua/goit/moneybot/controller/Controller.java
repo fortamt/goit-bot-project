@@ -250,6 +250,8 @@ public class Controller extends TelegramLongPollingBot {
                         .build());
             }
             if(callbackQuery.getData().equals("/start")){
+                Scheduler scheduler = new Scheduler();
+                scheduler.schedulerStart(message);
                 execute(SendMessage.builder()
                         .text("Добро пожаловать. Этот бот поможет отслеживать актуальные курсы валют")
                         .chatId(message.getChatId().toString())
