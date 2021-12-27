@@ -3,9 +3,9 @@ package ua.goit.moneybot.model;
 import java.util.List;
 
 public class Facade {
+    CashService cashService = new CashService();
 
     public List<BankResponse> getResponseFromBank(User user){
-        CashService cashService = new CashService();
         if(user.getSelectedBank().equals("Monobank")){
             return cashService.getCashedMonobankCurrency();
         } else if (user.getSelectedBank().equals("PrivatBank")){

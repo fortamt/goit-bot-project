@@ -16,8 +16,8 @@ import ua.goit.moneybot.model.UserService;
 import java.util.Optional;
 
 public class Controller extends TelegramLongPollingBot {
-    Keyboards keyboards = new Keyboards();
-    UserService userService = UserService.create();
+    private Keyboards keyboards = new Keyboards();
+    private UserService userService = UserService.create();
 
 
     @Override
