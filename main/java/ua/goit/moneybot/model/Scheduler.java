@@ -48,7 +48,7 @@ public class Scheduler {
                         e.printStackTrace();
                     }
                 };
-                executor.scheduleAtFixedRate(runnable, date.getTime() - System.currentTimeMillis(), 24 * 60 * 60 * 1000, TimeUnit.MILLISECONDS);
+                executor.scheduleAtFixedRate(runnable, delay, 24 * 60 * 60 * 1000, TimeUnit.MILLISECONDS);
             }
         }
     }
