@@ -1,1 +1,1 @@
-worker: sh target/bin/controller
+worker: sh target/bin/goit-bot-project
