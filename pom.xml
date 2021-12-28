@@ -30,13 +30,10 @@
         </dependency>
     </dependencies>
 
-
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <build>
+    <build>
+        <!-- To definue the plugin version in yor parent POM -->
+        <pluginManagement>
+            <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -68,7 +65,19 @@
                         </execution>
                     </executions>
                 </plugin>
-        </build>
+            </plugins>
+        </pluginManagement>
+
+    </build>
+
+
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+
     </properties>
 
 </project>
