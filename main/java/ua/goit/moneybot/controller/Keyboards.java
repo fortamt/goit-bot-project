@@ -158,8 +158,8 @@ public class Keyboards {
 
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         InlineKeyboardButton inlineKeyboardButton1 = new InlineKeyboardButton();
-        inlineKeyboardButton1.setText(time == 9 ? "✅9:00" : "9:00");
-        inlineKeyboardButton1.setCallbackData("9:00");
+        inlineKeyboardButton1.setText(time == 9 ? "✅09:00" : "09:00");
+        inlineKeyboardButton1.setCallbackData("09:00");
         InlineKeyboardButton inlineKeyboardButton2 = new InlineKeyboardButton();
         inlineKeyboardButton2.setText(time == 10 ? "✅10:00" : "10:00");
         inlineKeyboardButton2.setCallbackData("10:00");
