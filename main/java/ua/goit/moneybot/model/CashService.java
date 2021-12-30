@@ -16,17 +16,17 @@ public class CashService {
     private boolean privatbankRateIsValid = false;
     private boolean nbuRateIsValid = false;
 
-    public void monobankRateFlush() {
+    private void monobankRateFlush() {
         monobankResponse.clear();
         monobankRateIsValid = false;
     }
 
-    public void privatBankRateFlush() {
+    private void privatBankRateFlush() {
         privatBankResponse.clear();
         privatbankRateIsValid = false;
     }
 
-    public void nbuRateFlush() {
+    private void nbuRateFlush() {
         nbuResponse.clear();
         nbuRateIsValid = false;
     }
