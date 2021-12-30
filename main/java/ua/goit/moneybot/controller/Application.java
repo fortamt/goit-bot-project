@@ -5,7 +5,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class Application {
-    static Controller bot = new Controller();
+   private static Controller bot = new Controller();
 
     public static Controller getBot() {
         return bot;
