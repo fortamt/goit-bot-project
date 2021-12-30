@@ -11,22 +11,22 @@ public class CashService {
     private CopyOnWriteArrayList<BankResponse> monobankResponse = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<BankResponse> privatBankResponse = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<BankResponse> nbuResponse = new CopyOnWriteArrayList<>();
-    ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
+    private ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
     private boolean monobankRateIsValid = false;
     private boolean privatbankRateIsValid = false;
     private boolean nbuRateIsValid = false;
 
-    public void monobankRateFlush() {
+    private void monobankRateFlush() {
         monobankResponse.clear();
         monobankRateIsValid = false;
     }
 
-    public void privatBankRateFlush() {
+    private void privatBankRateFlush() {
         privatBankResponse.clear();
         privatbankRateIsValid = false;
     }
 
-    public void nbuRateFlush() {
+    private void nbuRateFlush() {
         nbuResponse.clear();
         nbuRateIsValid = false;
     }
